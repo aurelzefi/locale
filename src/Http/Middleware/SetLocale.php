@@ -15,7 +15,7 @@ class SetLocale
      */
     public function handle($request, Closure $next)
     {
-        if (! in_array($request->locale, config('locales') ?? [])) {
+        if ($this->hasInvalidLocale($request)) {
             return redirect($this->routeWithLocale($request));
         }
 
@@ -27,6 +27,17 @@ class SetLocale
     }
 
     /**
+     * Determine if the given request has an invalid locale.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function hasInvalidLocale($request)
+    {
+        return ! in_array($request->locale, config('locales') ?? []);
+    }
+
+    /**
      * Get the route with the locale.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -34,6 +45,6 @@ class SetLocale
      */
     protected function routeWithLocale($request)
     {
-        return implode(['/', config('app.locale'), $request->path()]);
+        return config('app.locale').'/'.$request->path();
     }
 }
