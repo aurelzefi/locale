@@ -1,6 +1,6 @@
 {
     "name": "aurelzefi/locale",
-    "description": "A package to easily add localization in your Laravel project.",
+    "description": "A package to easily add localization to your Laravel project.",
     "license": "MIT",
     "authors": [
         {
