@@ -35,7 +35,7 @@ composer require aurelzefi/locale
 In this file you should define the list of locales supported by your application.
 
 ```bash
-php artisan vendor:publish --tag=locale-config
+php artisan vendor:publish --tag=locales-config
 ```
 
 Add the `{locale}` prefix to your localized routes and the middleware:
